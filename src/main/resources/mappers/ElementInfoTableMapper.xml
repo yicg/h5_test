@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yilutong.dao.ElementInfoTableMapper" >
+  <resultMap id="BaseResultMap" type="com.yilutong.model.ElementInfoTable" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="project_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="element_key" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="element_value" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="type" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="page_object_desc" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="element_desc" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="creat_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, project_name, element_key, element_value, type, page_object_desc, element_desc, 
+    creat_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from element_info_table
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from element_info_table
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.yilutong.model.ElementInfoTable" >
+    insert into element_info_table (id, project_name, element_key, 
+      element_value, type, page_object_desc, 
+      element_desc, creat_time, update_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{projectName,jdbcType=VARCHAR}, #{elementKey,jdbcType=VARCHAR}, 
+      #{elementValue,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{pageObjectDesc,jdbcType=VARCHAR}, 
+      #{elementDesc,jdbcType=VARCHAR}, #{creatTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yilutong.model.ElementInfoTable" >
+    insert into element_info_table
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="projectName != null" >
+        project_name,
+      </if>
+      <if test="elementKey != null" >
+        element_key,
+      </if>
+      <if test="elementValue != null" >
+        element_value,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="pageObjectDesc != null" >
+        page_object_desc,
+      </if>
+      <if test="elementDesc != null" >
+        element_desc,
+      </if>
+      <if test="creatTime != null" >
+        creat_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="projectName != null" >
+        #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="elementKey != null" >
+        #{elementKey,jdbcType=VARCHAR},
+      </if>
+      <if test="elementValue != null" >
+        #{elementValue,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="pageObjectDesc != null" >
+        #{pageObjectDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="elementDesc != null" >
+        #{elementDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="creatTime != null" >
+        #{creatTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yilutong.model.ElementInfoTable" >
+    update element_info_table
+    <set >
+      <if test="projectName != null" >
+        project_name = #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="elementKey != null" >
+        element_key = #{elementKey,jdbcType=VARCHAR},
+      </if>
+      <if test="elementValue != null" >
+        element_value = #{elementValue,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="pageObjectDesc != null" >
+        page_object_desc = #{pageObjectDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="elementDesc != null" >
+        element_desc = #{elementDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="creatTime != null" >
+        creat_time = #{creatTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yilutong.model.ElementInfoTable" >
+    update element_info_table
+    set project_name = #{projectName,jdbcType=VARCHAR},
+      element_key = #{elementKey,jdbcType=VARCHAR},
+      element_value = #{elementValue,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      page_object_desc = #{pageObjectDesc,jdbcType=VARCHAR},
+      element_desc = #{elementDesc,jdbcType=VARCHAR},
+      creat_time = #{creatTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectByKey" parameterType="string" resultType="com.yilutong.model.ElementInfoTable">
+    select
+    <include refid="Base_Column_List" />
+    from element_info_table
+    where element_key = #{key}
+  </select>
+</mapper>
