@@ -41,6 +41,7 @@ public class TestDemo extends DriverBase {
     private WashCarInfoHandle washCarInfoHandle;
     private WashOrderHandle washOrderHandle;
     private MaintainInfoHandle maintainInfoHandle;
+    private PayHandle payHandle;
 
 
     public TestDemo() {
@@ -49,14 +50,14 @@ public class TestDemo extends DriverBase {
         washCarInfoHandle=new WashCarInfoHandle();
         washOrderHandle=new WashOrderHandle();
         maintainInfoHandle=new MaintainInfoHandle();
+        payHandle=new PayHandle();
     }
 
 
 
     @BeforeTest
-    public void beforeTest() throws InterruptedException {
+    public void beforeTest(){
         DriverBase.openBrower("chrome");
-
     }
 
     @Test
@@ -64,20 +65,22 @@ public class TestDemo extends DriverBase {
         ActionsUtil.getUrl(testUrl);
         Thread.sleep(20000);
         baseHandle.carWashServiceClick();
-        ActionsUtil.oneClick(WebElementUtil.findElement(By.xpath("//*[@id=\"searchStoreTool\"]/i")));
-        washCarInfoHandle.sendCheckSearchInputText("爱座驾汽车养护专家（七浦店）");
-        Thread.sleep(TIME);
-        //选择查询结果的门店
-        ActionsUtil.oneClick(WebElementUtil.findElement(By.xpath("//*[@id=\"store-list\"]/ul/div/h3/div[2]")));
-        Thread.sleep(TIME);
-        //获取洗车店详情页的洗车店名称
-        String addr=washCarInfoHandle.getShopAddrInfo();
-        Thread.sleep(TIME);
-        washCarInfoHandle.gpsInfoClick();
-        //点击返回按钮
-        washCarInfoHandle.backButtonClick();
-        //再次选择洗车店
-        Thread.sleep(TIME);
+        //点击洗车订单，进入到已下单页面
+        ActionsUtil.oneClick(WebElementUtil.findElement(By.xpath("//*[@id=\"taskTo\"]")));
+        //选择下单列表的第一个订单
+        ActionsUtil.oneClick(WebElementUtil.findElement(By.xpath("/html/body/ul/div[1]/div[1]/div[2]/div[1]/div[2]")));
+        //取消支付
+        ActionsUtil.oneClick(WebElementUtil.findElement(By.xpath("//*[@id=\"toCancel\"]")));
+        //弹框选择取消
+        ActionsUtil.oneClick(WebElementUtil.findElement(By.xpath("/html/body/div[3]/div[2]/div/div/div[2]/button[1]")));
+        //点击立即支付
+        ActionsUtil.oneClick(WebElementUtil.findElement(By.xpath("//*[@id=\"toPay\"]")));
+        //选择支付宝支付
+        Thread.sleep(5000);
+        ActionsUtil.oneClick(WebElementUtil.findElement(By.xpath("//*[@id=\"p_one_channelList\"]/div/div")));
+        Thread.sleep(5000);
+
+
     }
 
     /**
@@ -97,9 +100,7 @@ public class TestDemo extends DriverBase {
         Thread.sleep(TIME);
         //选择查询结果的门店
         washCarInfoHandle.selCarWashShopClick();
-        Thread.sleep(TIME);
-        //获取洗车店详情页的洗车店名称
-        String addr=washCarInfoHandle.getShopAddrInfo();
+        //点击GPS
         Thread.sleep(TIME);
         washCarInfoHandle.gpsInfoClick();
         //点击返回按钮
@@ -127,9 +128,6 @@ public class TestDemo extends DriverBase {
         //点击去洗车按钮
         washCarInfoHandle.toWashButtonClick();
         //获取下单页面的店铺信息   上海市虹口区七浦路133号B1
-        Thread.sleep(TIME);
-        String shop_addr=washOrderHandle.getWashOrderShopAddrText();
-        Assert.assertEquals(addr,shop_addr);
         //联系店铺
         //washOrderHandle.washOrderContactShopClick();
         //导航
@@ -159,7 +157,9 @@ public class TestDemo extends DriverBase {
         String button_text=washOrderHandle.getWashOrderConfirmText();
         Assert.assertEquals(button_text,"立即下单");
         //点击下单按钮
-       washOrderHandle.washOrderConfirmClick();
+        washOrderHandle.washOrderConfirmClick();
+        Thread.sleep(TIME);
+        payMethod();
     }
 
     /**
@@ -178,15 +178,11 @@ public class TestDemo extends DriverBase {
         //选择搜索到的店铺
         Thread.sleep(TIME);
         washCarInfoHandle.selCarWashShopClick();
-        Thread.sleep(TIME);
-        //获取车辆检测店详情页中的地址
-        String addr=washCarInfoHandle.getShopAddrInfo();
         //点击联系店铺
         // washCarInfoHandle.contactShopClick();
         //跳转至GPS页面
         Thread.sleep(TIME);
         washCarInfoHandle.gpsInfoClick();
-        //Thread.sleep(TIME);
         //点击返回按钮
         washCarInfoHandle.backButtonClick();
         Thread.sleep(TIME);
@@ -206,10 +202,6 @@ public class TestDemo extends DriverBase {
         //点击去检测
         Thread.sleep(TIME);
         washCarInfoHandle.toWashButtonClick();
-        //获取下单页面的店铺信息   上海市虹口区七浦路133号B1
-        Thread.sleep(TIME);
-        String shop_addr=washOrderHandle.getWashOrderShopAddrText();
-        Assert.assertEquals(addr,shop_addr);
         //联系店铺
         //washOrderHandle.washOrderContactShopClick();
         //导航
@@ -231,6 +223,9 @@ public class TestDemo extends DriverBase {
         Assert.assertEquals(actul_text,expect_text);
         //点击下单按钮
         washOrderHandle.washOrderConfirmClick();
+        //支付订单
+        payMethod();
+
 
     }
 
@@ -255,9 +250,6 @@ public class TestDemo extends DriverBase {
         Thread.sleep(TIME);
         //选择查询结果的门店
         washCarInfoHandle.selCarWashShopClick();
-        Thread.sleep(TIME);
-        //获取保养店的地址
-        String addr=washCarInfoHandle.getShopAddrInfo();
         Thread.sleep(TIME);
         washCarInfoHandle.gpsInfoClick();
         //点击返回按钮
@@ -303,9 +295,6 @@ public class TestDemo extends DriverBase {
         //点击去保养
          maintainInfoHandle.toMaintainButtonClick();
         Thread.sleep(TIME);
-        //获取下单页店铺名称
-        String shop_addr=washOrderHandle.getWashOrderShopAddrText();
-        Assert.assertEquals(shop_addr,addr);
         //点击导航
         washOrderHandle.washOrderGpsInfoClick();
         Thread.sleep(TIME);
@@ -325,7 +314,8 @@ public class TestDemo extends DriverBase {
         Assert.assertEquals(text,"*每个订单仅限当天有效，下单后请在门店营业时间内到店服务哦~");
         //点击立即下单按钮
         maintainInfoHandle.maintainOrderConfirmClick();
-
+        //支付订单
+        payMethod();
     }
 
     @AfterTest
@@ -335,5 +325,20 @@ public class TestDemo extends DriverBase {
     }
 
 
+    /**
+     * 下单后立即进行订单支付公共方法
+     */
+    public void payMethod() throws InterruptedException {
+        //取消支付
+        payHandle.cancelPayButtonClick();
+        //弹框选择取消
+        payHandle.choiceCancelButtonClick();
+        //点击立即支付
+        payHandle.toPayButtonClick();
+        //选择支付宝支付
+        Thread.sleep(TIME);
+        payHandle.choiceAlipayClick();
+        Thread.sleep(TIME);
+    }
 
 }

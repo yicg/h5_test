@@ -127,6 +127,13 @@ public class ConstParam {
     public static By maintain_order_bottom_text=getDataBy("maintain_order_bottom_text");
     public static By maintain_order_confirm=getDataBy("maintain_order_confirm");
 
+    /**
+     * 订单支付页面
+     */
+    public static By cancel_pay_button=getDataBy("cancel_pay_button");
+    public static By choice_cancel_button=getDataBy("choice_cancel_button");
+    public static By to_pay_button=getDataBy("to_pay_button");
+    public static By choice_alipay=getDataBy("choice_alipay");
 
 
 }
