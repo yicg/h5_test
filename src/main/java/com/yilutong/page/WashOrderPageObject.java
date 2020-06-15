@@ -14,6 +14,7 @@ import org.openqa.selenium.WebElement;
 @Slf4j
 public class WashOrderPageObject {
 
+
     /**
      * 下单页面的店铺地址
      */

@@ -6,12 +6,6 @@ import com.yilutong.model.ElementInfoTable;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.SqlSession;
 import org.openqa.selenium.By;
-import org.testng.annotations.Test;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
-import java.util.ResourceBundle;
 
 /**
  * @author yicg
@@ -42,6 +36,8 @@ public class ConstParam {
         }if("tagName".equalsIgnoreCase(type)){
             return By.tagName(value);
 
+        }if("id".equalsIgnoreCase(type)){
+            return By.id(value);
         }
         else {
             log.error("参数文件中的定位方式不存在.....");
@@ -95,6 +91,10 @@ public class ConstParam {
     /**
      * 检测下单页面
      */
+    //店铺搜索按钮-放大镜标志
+    public static By check_search_button=getDataBy("check_search_button");
+    //店铺搜索框
+    public static By check_search_input=getDataBy("check_search_input");
     public static By wash_order_shop_addr=getDataBy("wash_order_shop_addr");
     public static By wash_order_contact_shop=getDataBy("wash_order_contact_shop");
     public static By wash_order_gps_info=getDataBy("wash_order_gps_info");
@@ -106,6 +106,27 @@ public class ConstParam {
     public static By wash_order_confirm=getDataBy("wash_order_confirm");
     //检测下单页面底部一行文字
     public static By check_order_bottom_text=getDataBy("check_order_bottom_text");
+
+
+    /**
+     * 保养服务相关
+     */
+    public static By check_year_car_element=getDataBy("check_year_car_element");
+    public static By wash_car_element=getDataBy("wash_car_element");
+    public static By maintain_service_type=getDataBy("maintain_service_type");
+    public static By maintain_service_info=getDataBy("maintain_service_info");
+    public static By maintain_service_confirm_button=getDataBy("maintain_service_confirm_button");
+    public static By to_improved_type=getDataBy("to_improved_type");
+    public static By to_improved_car_no=getDataBy("to_improved_car_no");
+    public static By to_improved_cancel_button=getDataBy("to_improved_cancel_button");
+    public static By maintain_coupon_button=getDataBy("maintain_coupon_button");
+    public static By to_maintain_button=getDataBy("to_maintain_button");
+    public static By maintain_order_coupon_button=getDataBy("maintain_order_coupon_button");
+    public static By maintain_order_total_amount=getDataBy("maintain_order_total_amount");
+    public static By maintain_order_actual_amount=getDataBy("maintain_order_actual_amount");
+    public static By maintain_order_bottom_text=getDataBy("maintain_order_bottom_text");
+    public static By maintain_order_confirm=getDataBy("maintain_order_confirm");
+
 
 
 }

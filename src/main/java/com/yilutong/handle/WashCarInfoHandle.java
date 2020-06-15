@@ -21,6 +21,24 @@ public class WashCarInfoHandle {
     }
 
     /**
+     * 点击搜索按钮
+     */
+    public void checkSearchButtonClick(){
+        log.info("点击搜索按钮");
+        ActionsUtil.oneClick(washCarInfoPageObject.checkSearchButton());
+    }
+    /**
+     * 搜索框输入店铺信息并按下回车查询键
+     */
+    public void sendCheckSearchInputText(String shopName){
+        log.info("搜索框输入的信息是="+shopName);
+        //输入文本信息
+        ActionsUtil.sendText(washCarInfoPageObject.checkSearchInput(),shopName);
+        //回车
+        ActionsUtil.clickEnterKey(washCarInfoPageObject.checkSearchInput());
+    }
+
+    /**
      * 点击第一个洗车店元素
      */
     public void selCarWashShopClick(){

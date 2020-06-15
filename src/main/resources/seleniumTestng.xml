@@ -11,10 +11,10 @@
                     <include name="washServiceTest"/>
                     <!--检测服务流程-->
                     <include name="checkServiceTest"/>
-
+                    <!--保养服务流程-->
+                    <include name="maintainServiceTest"/>
                 </methods>
             </class>
-
         </classes>
     </test>
     <listeners>

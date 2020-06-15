@@ -17,6 +17,24 @@ import org.openqa.selenium.WebElement;
 public class WashCarInfoPageObject {
 
     /**
+     * 搜索标志按钮，点击后触发搜索框
+     */
+    public WebElement checkSearchButton(){
+        WebElement element=WebElementUtil.findElement(ConstParam.check_search_button);
+        log.info("搜索标志按钮元素");
+        return element;
+    }
+
+    /**
+     * 店铺搜索框
+     */
+    public WebElement checkSearchInput(){
+        WebElement element=WebElementUtil.findElement(ConstParam.check_search_input);
+        log.info("店铺搜索框元素");
+        return element;
+    }
+
+    /**
      *选择洗车店列表第一个店家
      */
     public WebElement selCarWashShop(){

@@ -5,12 +5,13 @@ import com.yilutong.common.DriverBase;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @author yicg
@@ -18,7 +19,9 @@ import java.util.Set;
  * @Description
  */
 @Slf4j
-public class ActionsUtil extends DriverBase {
+public class ActionsUtil {
+
+    public static WebDriver driver=DriverBase.driver;
     /**
      * 打开网站
      */
@@ -29,6 +32,14 @@ public class ActionsUtil extends DriverBase {
         }catch (Exception e){
             log.error("打开的地址有误："+e.getMessage());
         }
+    }
+
+    /**
+     * 封装控制键盘回车键
+     */
+    public static void clickEnterKey(WebElement element){
+        log.info("输入回车键");
+        element.sendKeys(Keys.ENTER);
     }
 
     /**
@@ -110,20 +121,29 @@ public class ActionsUtil extends DriverBase {
         log.info("用鼠标把元素拖拽到："+element+"x轴="+x+"y轴="+y);
     }
 
-
+    /**
+     * 元素拖拽到某个元素
+     */
+    public static void dropToElement(WebElement element1,WebElement element2){
+        Actions actions=new Actions(driver);
+        actions.dragAndDrop(element1,element2).perform();
+        log.info("用鼠标把元素拖拽到："+element2);
+    }
 
 
 
     /**
-     * 截图功能封装
+     * 截图功能封装    mac中的路径为   /screen/success/
      */
     public static void screenShort(){
+
         String path=System.getProperty("user.dir");
         String screenName=DateFormatUtils.format(DateFormatUtils.ZH_DATE_FORMAT);
 
         File file=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         try {
-            FileUtils.copyFile(file,new File(path+"/screen/"+screenName+".png"));
+            FileUtils.copyFile(file,new File(path+"\\screen\\fail\\"+screenName+".png"));
+            log.info("当前错误页面截图成功"+screenName+".png");
         }catch (Exception e){
             log.error("错误页面截图失败:"+e.getMessage());
             e.getMessage();
@@ -131,6 +151,25 @@ public class ActionsUtil extends DriverBase {
 
     }
 
+    /**
+     * 成功截图功能封装
+     */
+    public static void successScreenShort(){
+
+        String path=System.getProperty("user.dir");
+        String screenName=DateFormatUtils.format(DateFormatUtils.ZH_DATE_FORMAT);
+
+        File file=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        try {
+          //  FileUtils.copyFile(file,new File(path+"\\screen\\success\\"+screenName+".png"));
+            FileUtils.copyFile(file,new File("C:\\screen\\"+screenName+".png"));
+            log.info("当前成功页面截图成功"+screenName+".png");
+        }catch (Exception e){
+            log.error("成功页面截图失败:"+e.getMessage());
+            e.getMessage();
+        }
+
+    }
     /**
      * 切换句柄到新页面进行操作
      * 切换回原来页面方法：driver.switchTo().window(handle);
@@ -180,6 +219,28 @@ public class ActionsUtil extends DriverBase {
     public static void refresh(){
         driver.navigate().refresh();
         log.info("刷新当前页面");
+    }
+
+    //测试截图功能
+    public static void main(String[] args) {
+        String driverPath = System.getProperty("user.dir");
+
+        System.setProperty("webdriver.chrome.driver", driverPath + "/drivers/chromedriver.exe");
+        WebDriver  driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.get("https://www.baidu.com");
+
+        String screenName = DateFormatUtils.format(DateFormatUtils.ZH_DATE_FORMAT);
+        File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        try {
+            System.out.println(screenName);
+            FileUtils.copyFile(file, new File("C:\\Users\\yi.chunguang\\screen\\" + screenName + ".png"));
+            log.info("当前成功页面截图成功" + screenName + ".png");
+        } catch (Exception e) {
+            log.error("成功页面截图失败:" + e.getMessage());
+            e.printStackTrace();
+        }
+
     }
 
 }

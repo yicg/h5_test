@@ -52,5 +52,14 @@ public class BasePageObject {
         return element;
     }
 
+    /**
+     * 车辆保养服务
+     * @return
+     */
+    public WebElement carMaintainService(){
+        WebElement element= webElementCommon.twoLayersElements(ConstParam.service_list,"保养");
+        log.info("首页车辆保养按钮元素");
+        return element;
+    }
 
 }

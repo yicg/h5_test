@@ -3,6 +3,7 @@ package com.yilutong.utils;
 import com.yilutong.common.DriverBase;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -15,7 +16,9 @@ import java.util.List;
  * @Description
  */
 @Slf4j
-public class WebElementUtil extends DriverBase{
+public class WebElementUtil{
+
+    public static WebDriver driver=DriverBase.driver;
 
     /**
      * 查询单个的element
@@ -27,6 +30,7 @@ public class WebElementUtil extends DriverBase{
             WebDriverWait wait=new WebDriverWait(driver,40);
             wait.until(ExpectedConditions.presenceOfElementLocated(by));
             log.info("元素查找等待："+by);
+            ActionsUtil.successScreenShort();
         }catch (Exception e){
             log.error("元素查询超时："+by);
             //失败页面截图
