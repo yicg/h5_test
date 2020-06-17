@@ -14,7 +14,7 @@ public class DateFormatUtils {
     public static final String ZC_DATE_FORMAT="yyyy年MM月dd日";
     public static final String SHORT_DATE_FORMAT = "yy-MM-dd HH:mm";
     public static final String CHECK_LOG_FORMAT = "yyyyMMdd";
-    public static final String REPORT_CSV_FORMAT = "yyyyMMdd_HHmmss";
+    public static final String REPORT_CSV_FORMAT = "yyyy年MM月dd日-HH时mm分ss秒SSS毫秒";
     private static SimpleDateFormat simpleDateFormat;
 
     /**

@@ -9,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.Reporter;
 
 import java.io.File;
 import java.util.*;
@@ -31,6 +32,7 @@ public class ActionsUtil {
             log.info("打开测试网站："+url);
         }catch (Exception e){
             log.error("打开的地址有误："+e.getMessage());
+            failScreenShort();
         }
     }
 
@@ -38,16 +40,26 @@ public class ActionsUtil {
      * 封装控制键盘回车键
      */
     public static void clickEnterKey(WebElement element){
-        log.info("输入回车键");
-        element.sendKeys(Keys.ENTER);
+        try {
+            log.info("输入回车键");
+            element.sendKeys(Keys.ENTER);
+        }catch (Exception e){
+            failScreenShort();
+
+        }
+
     }
 
     /**
      * 二次封装click()
      */
     public static void oneClick(WebElement element){
-        element.click();
-        log.info("单击元素："+element);
+        try {
+            element.click();
+            log.info("单击元素："+element);
+        }catch (Exception e){
+            failScreenShort();
+        }
     }
 
 
@@ -55,10 +67,14 @@ public class ActionsUtil {
      * 二次封装文本输入方法
      */
     public static void sendText(WebElement element,String text){
-       //清空操作
-        element.clear();
-        element.sendKeys(text);
-        log.info("在文本框处："+element+"输入文本信息："+text);
+      try {
+          //清空操作
+          element.clear();
+          element.sendKeys(text);
+          log.info("在文本框处："+element+"输入文本信息："+text);
+      }catch (Exception e){
+          failScreenShort();
+      }
     }
 
     /**
@@ -89,87 +105,71 @@ public class ActionsUtil {
      * 封装鼠标操作双击
      */
     public static void twoClick(WebElement element){
-        Actions actions=new Actions(driver);
-        actions.doubleClick(element).perform();
-        log.info("鼠标双击元素："+element);
+      try {
+          Actions actions=new Actions(driver);
+          actions.doubleClick(element).perform();
+          log.info("鼠标双击元素："+element);
+      }catch (Exception e){
+          failScreenShort();
+      }
     }
 
     /**
      * 鼠标右键点击
      */
     public static void rightClick(WebElement element){
-        Actions actions=new Actions(driver);
-        actions.contextClick(element).perform();
-        log.info("鼠标右键点击："+element);
+       try {
+           Actions actions=new Actions(driver);
+           actions.contextClick(element).perform();
+           log.info("鼠标右键点击："+element);
+       }catch (Exception e){
+           failScreenShort();
+       }
     }
 
     /**
      * 鼠标移到某个元素
      */
     public static void moveMouse(WebElement element){
-        Actions actions=new Actions(driver);
-        actions.moveToElement(element).perform();
-        log.info("鼠标移到元素："+element);
+       try {
+           Actions actions=new Actions(driver);
+           actions.moveToElement(element).perform();
+           log.info("鼠标移到元素："+element);
+       }catch (Exception e){
+           failScreenShort();
+       }
     }
 
     /**
      * 元素拖拽到x,y轴上
      */
     public static void drop(WebElement element,int x,int y){
-        Actions actions=new Actions(driver);
-        actions.dragAndDropBy(element,x,y).perform();
-        log.info("用鼠标把元素拖拽到："+element+"x轴="+x+"y轴="+y);
+      try {
+          Actions actions=new Actions(driver);
+          actions.dragAndDropBy(element,x,y).perform();
+          log.info("用鼠标把元素拖拽到："+element+"x轴="+x+"y轴="+y);
+      }catch (Exception e){
+          failScreenShort();
+      }
     }
 
     /**
      * 元素拖拽到某个元素
      */
     public static void dropToElement(WebElement element1,WebElement element2){
-        Actions actions=new Actions(driver);
-        actions.dragAndDrop(element1,element2).perform();
-        log.info("用鼠标把元素拖拽到："+element2);
-    }
-
-
-
-    /**
-     * 截图功能封装    mac中的路径为   /screen/success/
-     */
-    public static void screenShort(){
-
-        String path=System.getProperty("user.dir");
-        String screenName=DateFormatUtils.format(DateFormatUtils.ZH_DATE_FORMAT);
-
-        File file=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         try {
-            FileUtils.copyFile(file,new File(path+"\\screen\\fail\\"+screenName+".png"));
-            log.info("当前错误页面截图成功"+screenName+".png");
+            Actions actions=new Actions(driver);
+            actions.dragAndDrop(element1,element2).perform();
+            log.info("用鼠标把元素拖拽到："+element2);
         }catch (Exception e){
-            log.error("错误页面截图失败:"+e.getMessage());
-            e.getMessage();
+            failScreenShort();
         }
 
     }
 
-    /**
-     * 成功截图功能封装
-     */
-    public static void successScreenShort(){
 
-        String path=System.getProperty("user.dir");
-        String screenName=DateFormatUtils.format(DateFormatUtils.ZH_DATE_FORMAT);
 
-        File file=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        try {
-          //  FileUtils.copyFile(file,new File(path+"\\screen\\success\\"+screenName+".png"));
-            FileUtils.copyFile(file,new File("C:\\screen\\"+screenName+".png"));
-            log.info("当前成功页面截图成功"+screenName+".png");
-        }catch (Exception e){
-            log.error("成功页面截图失败:"+e.getMessage());
-            e.getMessage();
-        }
 
-    }
     /**
      * 切换句柄到新页面进行操作
      * 切换回原来页面方法：driver.switchTo().window(handle);
@@ -197,8 +197,12 @@ public class ActionsUtil {
      */
     public static void switchToIframe(WebElement element){
         //进入到某个元素定位到的iframe
-        driver.switchTo().frame(element);
-        log.info("控制权转交到iframe表单:"+element);
+      try {
+          driver.switchTo().frame(element);
+          log.info("控制权转交到iframe表单:"+element);
+      }catch (Exception e){
+          failScreenShort();
+      }
 
     }
 
@@ -207,9 +211,13 @@ public class ActionsUtil {
      * @throws InterruptedException
      */
     public static void switchToAlert(WebElement element){
+        try {
+            driver.switchTo().alert();
+            log.info("控制权交给弹框alert");
+        }catch (Exception e){
+            failScreenShort();
+        }
 
-        driver.switchTo().alert();
-        log.info("控制权交给弹框alert");
     }
 
 
@@ -221,26 +229,50 @@ public class ActionsUtil {
         log.info("刷新当前页面");
     }
 
-    //测试截图功能
-    public static void main(String[] args) {
-        String driverPath = System.getProperty("user.dir");
 
-        System.setProperty("webdriver.chrome.driver", driverPath + "/drivers/chromedriver.exe");
-        WebDriver  driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get("https://www.baidu.com");
 
-        String screenName = DateFormatUtils.format(DateFormatUtils.ZH_DATE_FORMAT);
-        File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+    /**
+     * 失败截图功能封装
+     */
+    public static void failScreenShort(){
+
+        //String path=System.getProperty("user.dir");
+        String path="C:\\screen\\fail\\";
+        String screenName=DateFormatUtils.format(DateFormatUtils.REPORT_CSV_FORMAT);
+
+        File file=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         try {
-            System.out.println(screenName);
-            FileUtils.copyFile(file, new File("C:\\Users\\yi.chunguang\\screen\\" + screenName + ".png"));
-            log.info("当前成功页面截图成功" + screenName + ".png");
-        } catch (Exception e) {
-            log.error("成功页面截图失败:" + e.getMessage());
-            e.printStackTrace();
+            //FileUtils.copyFile(file,new File(path+"\\screen\\fail\\"+screenName+".png"));
+            FileUtils.copyFile(file,new File(path+screenName+".png"));
+            log.info("当前错误页面截图成功"+screenName+".png");
+            //以链接的形式进行读取失败截图
+            Reporter.log("<a href="+path + screenName+".png" + " target=_blank>失败截图:"+screenName+".png"  +"</a>", true);
+        }catch (Exception e){
+            log.error("错误页面截图失败:"+e.getMessage());
+            e.getMessage();
         }
 
     }
 
+    /**
+     * 成功截图功能封装
+     */
+    public static void successScreenShort(){
+
+        //String path=System.getProperty("user.dir");
+        String path="C:\\screen\\success\\";
+        String screenName=DateFormatUtils.format(DateFormatUtils.REPORT_CSV_FORMAT);
+
+        File file=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        try {
+            // FileUtils.copyFile(file,new File(path+"\\screen\\success\\"+screenName+".png"));
+            FileUtils.copyFile(file,new File(path+screenName+".png"));
+            log.info("当前成功页面截图成功"+screenName+".png");
+            //以链接的形式进行读取成功截图
+            Reporter.log("<a href="+path + screenName+".png" + " target=_blank>成功截图:"+screenName+".png"  +"</a>", true);
+        }catch (Exception e){
+            log.error("当前页面截图失败:"+e.getMessage());
+        }
+
+    }
 }

@@ -23,7 +23,7 @@ import java.util.List;
  */
 public class TestDemo extends DriverBase {
 
-    static final long TIME=2000;
+    static final long TIME=3000;
 
     int channelId=83;
     String openId="oI_kUw9jaumnO4sntgLJBBmM_FoM";
@@ -62,6 +62,7 @@ public class TestDemo extends DriverBase {
 
     @Test
     public void demo() throws InterruptedException {
+        Reporter.log("订单支付方法");
         ActionsUtil.getUrl(testUrl);
         Thread.sleep(20000);
         baseHandle.carWashServiceClick();
@@ -89,6 +90,7 @@ public class TestDemo extends DriverBase {
      */
     @Test
     public void washServiceTest() throws InterruptedException {
+        Reporter.log("洗车服务......");
         //打开应该
         ActionsUtil.getUrl(testUrl);
         Thread.sleep(20000);
@@ -167,6 +169,7 @@ public class TestDemo extends DriverBase {
      */
     @Test
     public void checkServiceTest() throws InterruptedException {
+        Reporter.log("检测服务.....");
         //打开应该
         ActionsUtil.getUrl(testUrl);
         Thread.sleep(20000);
@@ -234,6 +237,7 @@ public class TestDemo extends DriverBase {
      */
     @Test
     public void maintainServiceTest() throws InterruptedException {
+        Reporter.log("车辆保养服务....");
         ActionsUtil.getUrl(testUrl);
         Thread.sleep(20000);
         //把代办年检元素拖拽到最左边洗车元素页面

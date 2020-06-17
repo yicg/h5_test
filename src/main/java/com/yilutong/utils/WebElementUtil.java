@@ -34,7 +34,7 @@ public class WebElementUtil{
         }catch (Exception e){
             log.error("元素查询超时："+by);
             //失败页面截图
-            ActionsUtil.screenShort();
+            ActionsUtil.failScreenShort();
         }
         WebElement element=driver.findElement(by);
         return element;
@@ -51,7 +51,7 @@ public class WebElementUtil{
         }catch (Exception e){
             log.error("多个元素查询超时："+by);
             //失败页面截图
-            ActionsUtil.screenShort();
+            ActionsUtil.failScreenShort();
         }
         List<WebElement> list=driver.findElements(by);
         return list;

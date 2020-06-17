@@ -13,6 +13,7 @@
                     <include name="checkServiceTest"/>
                     <!--保养服务流程-->
                     <include name="maintainServiceTest"/>
+<!--                    <include name="demo"/>-->
                 </methods>
             </class>
         </classes>

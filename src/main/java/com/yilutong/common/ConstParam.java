@@ -24,19 +24,19 @@ public class ConstParam {
         ElementInfoTable elementInfoTable=elementInfoTableMapper.selectByKey(key);
         String type=elementInfoTable.getType();
         String value=elementInfoTable.getElementValue();
-        if("xpath".equalsIgnoreCase(type)){
+        if(type.equalsIgnoreCase(LocationType.XPATH.name())){
             return By.xpath(value);
 
-        }if("className".equalsIgnoreCase(type)){
+        }if(type.equalsIgnoreCase(LocationType.CLASSNAME.name())){
             return By.className(value);
 
-        }if("linkText".equalsIgnoreCase(type)){
+        }if(type.equalsIgnoreCase(LocationType.LINKTEXT.name())){
             return By.linkText(value);
 
-        }if("tagName".equalsIgnoreCase(type)){
+        }if(type.equalsIgnoreCase(LocationType.TAGNAME.name())){
             return By.tagName(value);
 
-        }if("id".equalsIgnoreCase(type)){
+        }if(type.equalsIgnoreCase(LocationType.ID.name())){
             return By.id(value);
         }
         else {
