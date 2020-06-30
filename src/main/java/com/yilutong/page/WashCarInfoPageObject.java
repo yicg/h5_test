@@ -20,8 +20,9 @@ public class WashCarInfoPageObject {
      * 搜索标志按钮，点击后触发搜索框
      */
     public WebElement checkSearchButton(){
-        WebElement element=WebElementUtil.findElement(ConstParam.check_search_button);
         log.info("搜索标志按钮元素");
+        WebElement element=WebElementUtil.findElement(ConstParam.check_search_button);
+
         return element;
     }
 
@@ -29,8 +30,9 @@ public class WashCarInfoPageObject {
      * 店铺搜索框
      */
     public WebElement checkSearchInput(){
-        WebElement element=WebElementUtil.findElement(ConstParam.check_search_input);
         log.info("店铺搜索框元素");
+        WebElement element=WebElementUtil.findElement(ConstParam.check_search_input);
+
         return element;
     }
 
@@ -38,24 +40,27 @@ public class WashCarInfoPageObject {
      *选择洗车店列表第一个店家
      */
     public WebElement selCarWashShop(){
-        WebElement element= WebElementUtil.findElement(ConstParam.sel_car_wash_shop);
         log.info("洗车店列表第一个店家元素");
+        WebElement element= WebElementUtil.findElement(ConstParam.sel_car_wash_shop);
+
         return element;
     }
     /**
      * 洗车店地址信息文本
      */
     public WebElement shopAddrInfo(){
-        WebElement element= WebElementUtil.findElement(ConstParam.sel_shop_addr_info);
         log.info("洗车店地址信息文本元素");
+        WebElement element= WebElementUtil.findElement(ConstParam.sel_shop_addr_info);
+
         return element;
     }
     /**
      * 联系店铺元素
      */
     public WebElement contactShop(){
-        WebElement element= WebElementUtil.findElement(ConstParam.sel_contact_shop);
         log.info("联系店铺元素");
+        WebElement element= WebElementUtil.findElement(ConstParam.sel_contact_shop);
+
         return element;
     }
 
@@ -64,8 +69,9 @@ public class WashCarInfoPageObject {
      * @return
      */
     public WebElement gpsInfo(){
-        WebElement element=WebElementUtil.findElement(ConstParam.sel_gps_info);
         log.info("页面导航元素");
+        WebElement element=WebElementUtil.findElement(ConstParam.sel_gps_info);
+
         return element;
     }
 
@@ -73,8 +79,9 @@ public class WashCarInfoPageObject {
      * 导航页返回按钮元素
      */
     public WebElement backButton(){
-        WebElement element=WebElementUtil.findElement(ConstParam.back_button);
         log.info("导航页返回按钮元素");
+        WebElement element=WebElementUtil.findElement(ConstParam.back_button);
+
         return element;
     }
 
@@ -83,8 +90,9 @@ public class WashCarInfoPageObject {
      * @return
      */
     public WebElement smallCar(){
-        WebElement element=WebElementUtil.findElement(ConstParam.sel_small_car);
         log.info("小型轿车页面元素");
+        WebElement element=WebElementUtil.findElement(ConstParam.sel_small_car);
+
         return element;
     }
 
@@ -93,8 +101,9 @@ public class WashCarInfoPageObject {
      * @return
      */
     public WebElement suvCar(){
-        WebElement element=WebElementUtil.findElement(ConstParam.sel_suv_car);
         log.info("suv车型页面元素");
+        WebElement element=WebElementUtil.findElement(ConstParam.sel_suv_car);
+
         return element;
     }
 
@@ -103,8 +112,9 @@ public class WashCarInfoPageObject {
      * @return
      */
     public WebElement unusedVoucher(){
-        WebElement element=WebElementUtil.findElement(ConstParam.sel_unused_voucher);
         log.info("未用券选项页面元素");
+        WebElement element=WebElementUtil.findElement(ConstParam.sel_unused_voucher);
+
         return element;
     }
 
@@ -112,8 +122,9 @@ public class WashCarInfoPageObject {
      * 活动券勾选框元素
      */
     public WebElement tickActivity(){
-        WebElement element=WebElementUtil.findElement(ConstParam.tick_activity);
         log.info("活动券勾选框元素");
+        WebElement element=WebElementUtil.findElement(ConstParam.tick_activity);
+
         return element;
     }
 
@@ -122,8 +133,9 @@ public class WashCarInfoPageObject {
      * @return
      */
     public WebElement toWashButton(){
-        WebElement element=WebElementUtil.findElement(ConstParam.sel_to_wash_button);
         log.info("去洗车按钮按钮元素");
+        WebElement element=WebElementUtil.findElement(ConstParam.sel_to_wash_button);
+
         return element;
     }
 

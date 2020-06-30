@@ -21,7 +21,8 @@ public class UserCenterHandle {
      * 点击个人中心页的头像
      */
     public void userCenterHeadClick(){
-        ActionsUtil.oneClick(userCenterPageObject.userCenterHead());
         log.info("点击个人中心页头像");
+        ActionsUtil.oneClick(userCenterPageObject.userCenterHead());
+
     }
 }

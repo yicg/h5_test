@@ -27,32 +27,36 @@ public class BaseHandle {
      * 点击头像
      */
     public void userHeadClick(){
-        ActionsUtil.oneClick(basePageObject.userHead());
         log.info("点击头像...");
+        ActionsUtil.oneClick(basePageObject.userHead());
+
     }
 
     /**
      * 点击洗车按钮
      */
     public void carWashServiceClick(){
-        ActionsUtil.oneClick(basePageObject.carWashService());
         log.info("点击洗车按钮...");
+        ActionsUtil.oneClick(basePageObject.carWashService());
+
     }
 
     /**
      * 点击检测按钮
      */
     public void carInspectionServiceClick(){
-        ActionsUtil.oneClick(basePageObject.carInspectionService());
         log.info("点击检测按钮...");
+        ActionsUtil.oneClick(basePageObject.carInspectionService());
+
     }
 
     /**
      * 点击保养按钮
      */
     public void carMaintainServiceClick(){
-        ActionsUtil.oneClick(basePageObject.carMaintainService());
         log.info("点击保养按钮...");
+        ActionsUtil.oneClick(basePageObject.carMaintainService());
+
     }
 
 
@@ -61,8 +65,9 @@ public class BaseHandle {
      * 通过xpath找到的洗车页面元素位置
      */
     public WebElement washCarElement(){
-        WebElement element= WebElementUtil.findElement(ConstParam.wash_car_element);
         log.info("通过xpath找到的洗车页面元素位置");
+        WebElement element= WebElementUtil.findElement(ConstParam.wash_car_element);
+
         return element;
     }
 
@@ -70,8 +75,9 @@ public class BaseHandle {
      * 通过xpath找到的年检服务页面元素
      */
     public WebElement checkYearCarElement(){
-        WebElement element=WebElementUtil.findElement(ConstParam.check_year_car_element);
         log.info("年检服务页面元素");
+        WebElement element=WebElementUtil.findElement(ConstParam.check_year_car_element);
+
         return element;
     }
 

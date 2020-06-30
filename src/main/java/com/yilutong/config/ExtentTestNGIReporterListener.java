@@ -15,6 +15,10 @@ import org.testng.xml.XmlSuite;
 import java.io.File;
 import java.util.*;
 
+
+/**
+ * @author yi.chunguang
+ */
 public class ExtentTestNGIReporterListener implements IReporter {
     //生成的路径以及文件名
     private static final String OUTPUT_FOLDER = "cases-output/";
@@ -167,8 +171,9 @@ public class ExtentTestNGIReporterListener implements IReporter {
                 }
                 //cases.getModel().setDescription(description.toString());
                 //cases = extent.createTest(vo.getMethod().getMethodName());
-                for (String group : result.getMethod().getGroups())
+                for (String group : result.getMethod().getGroups()) {
                     test.assignCategory(group);
+                }
 
                 List<String> outputList = Reporter.getOutput(result);
                 for(String output:outputList){

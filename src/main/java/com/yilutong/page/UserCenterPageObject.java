@@ -19,8 +19,9 @@ public class UserCenterPageObject {
      * @return
      */
     public WebElement userCenterHead(){
-        WebElement webElement= WebElementUtil.findElement(ConstParam.user_center_head);
         log.info("获取个人中心页的头像元素");
+        WebElement webElement= WebElementUtil.findElement(ConstParam.user_center_head);
+
         return webElement;
     }
 }

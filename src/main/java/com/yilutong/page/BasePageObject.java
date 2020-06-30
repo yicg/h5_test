@@ -28,8 +28,8 @@ public class BasePageObject {
      * @return
      */
     public WebElement userHead(){
-        WebElement element= WebElementUtil.findElement(ConstParam.user_head);
         log.info("用户中心头像元素");
+        WebElement element= WebElementUtil.findElement(ConstParam.user_head);
         return element;
     }
 
@@ -37,8 +37,9 @@ public class BasePageObject {
      * 洗车按钮元素
      */
     public WebElement carWashService(){
-        WebElement element= webElementCommon.twoLayersElements(ConstParam.service_list,"洗车");
         log.info("首页洗车按钮元素");
+        WebElement element= webElementCommon.twoLayersElements(ConstParam.service_list,"洗车");
+
         return element;
     }
 
@@ -47,8 +48,9 @@ public class BasePageObject {
      * @return
      */
     public WebElement carInspectionService(){
-        WebElement element= webElementCommon.twoLayersElements(ConstParam.service_list,"检测");
         log.info("首页车辆检测按钮元素");
+        WebElement element= webElementCommon.twoLayersElements(ConstParam.service_list,"检测");
+
         return element;
     }
 
@@ -57,8 +59,9 @@ public class BasePageObject {
      * @return
      */
     public WebElement carMaintainService(){
-        WebElement element= webElementCommon.twoLayersElements(ConstParam.service_list,"保养");
         log.info("首页车辆保养按钮元素");
+        WebElement element= webElementCommon.twoLayersElements(ConstParam.service_list,"保养");
+
         return element;
     }
 

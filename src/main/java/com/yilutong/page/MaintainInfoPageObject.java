@@ -85,8 +85,9 @@ public class MaintainInfoPageObject {
      * 去保养按钮元素
      */
     public WebElement toMaintainButton(){
-        WebElement element=WebElementUtil.findElement(ConstParam.to_maintain_button);
         log.info("去保养按钮元素");
+        WebElement element=WebElementUtil.findElement(ConstParam.to_maintain_button);
+
         return element;
     }
 
