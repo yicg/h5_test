@@ -17,7 +17,7 @@
         </classes>
     </test>
     <listeners>
-        <listener class-name="com.yilutong.config.ExtentTestNGIReporterListener"/>
+       <!-- <listener class-name="com.yilutong.config.ExtentTestNGIReporterListener"/>-->
     </listeners>
 
 </suite>
