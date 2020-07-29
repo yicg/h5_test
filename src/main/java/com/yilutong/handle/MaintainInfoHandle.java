@@ -30,8 +30,9 @@ public class MaintainInfoHandle {
      * @return
      */
     public void maintainServiceTypeClick(){
-        log.info("进入到保养店信息页，点击车辆保养套餐");
+
         ActionsUtil.oneClick(maintainInfoPageObject.maintainServiceType());
+        log.info("进入到保养店信息页，点击车辆保养套餐");
     }
 
     /**
@@ -39,16 +40,18 @@ public class MaintainInfoHandle {
      * @return
      */
     public void  maintainServiceConfirmButtonClick(){
-        log.info("点击保养套餐确认按钮元素");
+
         ActionsUtil.oneClick(maintainInfoPageObject.maintainServiceConfirmButton());
+        log.info("点击保养套餐确认按钮元素");
     }
 
     /**
      * 点击车辆保养未完善信息
      */
     public void toImprovedTypeClick(){
-        log.info("点击车辆保养未完善信息");
+
         ActionsUtil.oneClick(maintainInfoPageObject.toImprovedType());
+        log.info("点击车辆保养未完善信息");
     }
     /**
      * 获取车辆保养未完善信息详情页车牌号码信息
@@ -61,30 +64,34 @@ public class MaintainInfoHandle {
      * 点击车辆保养未完善信息详情页取消按钮
      */
     public void toImprovedCancelButtonClick(){
-        log.info("点击车辆保养未完善信息详情页取消按钮");
+
         ActionsUtil.oneClick(maintainInfoPageObject.toImprovedCancelButton());
+        log.info("点击车辆保养未完善信息详情页取消按钮");
     }
     /**
      * 点击车辆保养未完善信息详情页未使用优惠券
      */
     public void maintainCouponButtonClick(){
-        log.info("点击车辆保养未完善信息详情页未使用优惠券");
+
         ActionsUtil.oneClick(maintainInfoPageObject.maintainCouponButton());
+        log.info("点击车辆保养未完善信息详情页未使用优惠券");
     }
 
     /**
      * 点击去保养按钮
      */
     public void toMaintainButtonClick(){
-        log.info("点击去保养按钮");
+
         ActionsUtil.oneClick(maintainInfoPageObject.toMaintainButton());
+        log.info("点击去保养按钮");
     }
     /**
      * 点击店家保养订单详情页，未使用优惠券按钮
      */
     public void maintainOrderCouponButtonClick(){
-        log.info("点击店家保养订单详情页，未使用优惠券按钮");
+
         ActionsUtil.oneClick(maintainInfoPageObject.maintainOrderCouponButton());
+        log.info("点击店家保养订单详情页，未使用优惠券按钮");
     }
     /**
      * 获取保养订单详情页，支付总金额
@@ -111,8 +118,9 @@ public class MaintainInfoHandle {
      * 点击保养订单详情页，确认下单按钮
      */
     public void maintainOrderConfirmClick(){
-        log.info("点击保养订单详情页，确认下单按钮");
+
         ActionsUtil.oneClick(maintainInfoPageObject.maintainOrderConfirm());
+        log.info("点击保养订单详情页，确认下单按钮");
     }
 
     /**

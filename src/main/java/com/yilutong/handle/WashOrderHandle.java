@@ -32,15 +32,17 @@ public class WashOrderHandle {
      * 点击下单页面的联系店铺元素
      */
     public void washOrderContactShopClick(){
-        log.info("点击下单页面的联系店铺元素");
+
         ActionsUtil.oneClick(washOrderPageObject.washOrderContactShop());
+        log.info("点击下单页面的联系店铺元素");
     }
     /**
      * 点击下单页面的gps信息
      */
     public void washOrderGpsInfoClick(){
-        log.info("点击下单页面的gps信息");
+
         ActionsUtil.oneClick(washOrderPageObject.washOrderGpsInfo());
+        log.info("点击下单页面的gps信息");
     }
     /**
      * 获取优惠券的信息，获取名字做断言
@@ -90,8 +92,9 @@ public class WashOrderHandle {
      * 点击立即下单按钮
      */
     public void washOrderConfirmClick(){
-        log.info("点击立即下单按钮");
+
         ActionsUtil.oneClick(washOrderPageObject.washOrderConfirm());
+        log.info("点击立即下单按钮");
     }
 
     /**

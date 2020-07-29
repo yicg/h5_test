@@ -27,8 +27,9 @@ public class BaseHandle {
      * 点击头像
      */
     public void userHeadClick(){
-        log.info("点击头像...");
+
         ActionsUtil.oneClick(basePageObject.userHead());
+        log.info("点击头像...");
 
     }
 
@@ -36,8 +37,9 @@ public class BaseHandle {
      * 点击洗车按钮
      */
     public void carWashServiceClick(){
-        log.info("点击洗车按钮...");
+
         ActionsUtil.oneClick(basePageObject.carWashService());
+        log.info("点击洗车按钮...");
 
     }
 
@@ -45,8 +47,9 @@ public class BaseHandle {
      * 点击检测按钮
      */
     public void carInspectionServiceClick(){
-        log.info("点击检测按钮...");
+
         ActionsUtil.oneClick(basePageObject.carInspectionService());
+        log.info("点击检测按钮...");
 
     }
 
@@ -54,8 +57,9 @@ public class BaseHandle {
      * 点击保养按钮
      */
     public void carMaintainServiceClick(){
-        log.info("点击保养按钮...");
+
         ActionsUtil.oneClick(basePageObject.carMaintainService());
+        log.info("点击保养按钮...");
 
     }
 
