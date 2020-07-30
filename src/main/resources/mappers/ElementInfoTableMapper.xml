@@ -8,6 +8,7 @@
       <arg column="element_key" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="element_value" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="type" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="sleep_time" jdbcType="BIGINT" javaType="java.lang.Long" />
       <arg column="page_object_desc" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="element_desc" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="creat_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
@@ -15,8 +16,8 @@
     </constructor>
   </resultMap>
   <sql id="Base_Column_List" >
-    id, project_name, element_key, element_value, type, page_object_desc, element_desc, 
-    creat_time, update_time
+    id, project_name, element_key, element_value, type, sleep_time, page_object_desc, 
+    element_desc, creat_time, update_time
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -30,13 +31,13 @@
   </delete>
   <insert id="insert" parameterType="com.yilutong.model.ElementInfoTable" >
     insert into element_info_table (id, project_name, element_key, 
-      element_value, type, page_object_desc, 
-      element_desc, creat_time, update_time
-      )
+      element_value, type, sleep_time, 
+      page_object_desc, element_desc, creat_time, 
+      update_time)
     values (#{id,jdbcType=INTEGER}, #{projectName,jdbcType=VARCHAR}, #{elementKey,jdbcType=VARCHAR}, 
-      #{elementValue,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{pageObjectDesc,jdbcType=VARCHAR}, 
-      #{elementDesc,jdbcType=VARCHAR}, #{creatTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
-      )
+      #{elementValue,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{sleepTime,jdbcType=BIGINT}, 
+      #{pageObjectDesc,jdbcType=VARCHAR}, #{elementDesc,jdbcType=VARCHAR}, #{creatTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.yilutong.model.ElementInfoTable" >
     insert into element_info_table
@@ -55,6 +56,9 @@
       </if>
       <if test="type != null" >
         type,
+      </if>
+      <if test="sleepTime != null" >
+        sleep_time,
       </if>
       <if test="pageObjectDesc != null" >
         page_object_desc,
@@ -85,6 +89,9 @@
       <if test="type != null" >
         #{type,jdbcType=VARCHAR},
       </if>
+      <if test="sleepTime != null" >
+        #{sleepTime,jdbcType=BIGINT},
+      </if>
       <if test="pageObjectDesc != null" >
         #{pageObjectDesc,jdbcType=VARCHAR},
       </if>
@@ -114,6 +121,9 @@
       <if test="type != null" >
         type = #{type,jdbcType=VARCHAR},
       </if>
+      <if test="sleepTime != null" >
+        sleep_time = #{sleepTime,jdbcType=BIGINT},
+      </if>
       <if test="pageObjectDesc != null" >
         page_object_desc = #{pageObjectDesc,jdbcType=VARCHAR},
       </if>
@@ -135,6 +145,7 @@
       element_key = #{elementKey,jdbcType=VARCHAR},
       element_value = #{elementValue,jdbcType=VARCHAR},
       type = #{type,jdbcType=VARCHAR},
+      sleep_time = #{sleepTime,jdbcType=BIGINT},
       page_object_desc = #{pageObjectDesc,jdbcType=VARCHAR},
       element_desc = #{elementDesc,jdbcType=VARCHAR},
       creat_time = #{creatTime,jdbcType=TIMESTAMP},

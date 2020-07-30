@@ -14,8 +14,11 @@ import org.openqa.selenium.By;
  */
 @Slf4j
 public class ConstParam {
-   static SqlSession sqlSession;
-   static ElementInfoTableMapper elementInfoTableMapper;
+   public static SqlSession sqlSession;
+   public static ElementInfoTableMapper elementInfoTableMapper;
+
+   //等待时间,预留字段
+    public static int SLEEP_TIME;
 
     //从数据库读取数据
     public  static By getDataBy(String key){
@@ -24,6 +27,7 @@ public class ConstParam {
         ElementInfoTable elementInfoTable=elementInfoTableMapper.selectByKey(key);
         String type=elementInfoTable.getType();
         String value=elementInfoTable.getElementValue();
+        SLEEP_TIME=elementInfoTable.getSleepTime()*1000;
         if(type.equalsIgnoreCase(LocationType.XPATH.name())){
             return By.xpath(value);
 

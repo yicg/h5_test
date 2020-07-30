@@ -21,6 +21,8 @@ public class ElementInfoTable {
 
     private Date updateTime;
 
+    private Integer sleepTime;
+
     @Override
     public String toString() {
         return "ElementInfoTable{" +
@@ -33,10 +35,11 @@ public class ElementInfoTable {
                 ", elementDesc='" + elementDesc + '\'' +
                 ", creatTime=" + creatTime +
                 ", updateTime=" + updateTime +
+                ", sleepTime=" + sleepTime +
                 '}';
     }
 
-    public ElementInfoTable(Integer id, String projectName, String elementKey, String elementValue, String type, String pageObjectDesc, String elementDesc, Date creatTime, Date updateTime) {
+    public ElementInfoTable(Integer id, String projectName, String elementKey, String elementValue, String type, String pageObjectDesc, String elementDesc, Date creatTime, Date updateTime, int sleepTime) {
         this.id = id;
         this.projectName = projectName;
         this.elementKey = elementKey;
@@ -46,10 +49,19 @@ public class ElementInfoTable {
         this.elementDesc = elementDesc;
         this.creatTime = creatTime;
         this.updateTime = updateTime;
+        this.sleepTime = sleepTime;
     }
 
     public ElementInfoTable() {
         super();
+    }
+
+    public Integer getSleepTime() {
+        return sleepTime;
+    }
+
+    public void setSleepTime(Integer sleepTime) {
+        this.sleepTime = sleepTime;
     }
 
     public Integer getId() {

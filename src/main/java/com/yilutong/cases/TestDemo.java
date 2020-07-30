@@ -367,4 +367,11 @@ public class TestDemo extends DriverBase {
     }
 
 
+    /**
+     * 公共的睡眠方法
+     * @param key
+     */
+    public void sleepMethod(String key){
+
+    }
 }

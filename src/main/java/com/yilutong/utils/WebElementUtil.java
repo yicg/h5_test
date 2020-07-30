@@ -1,5 +1,6 @@
 package com.yilutong.utils;
 
+import com.yilutong.common.ConstParam;
 import com.yilutong.common.DriverBase;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
@@ -27,7 +28,7 @@ public class WebElementUtil{
         long start_find_element_time=System.currentTimeMillis();
         try {
             //显示等待10秒，若未查到报超时
-            WebDriverWait wait=new WebDriverWait(driver,40);
+            WebDriverWait wait=new WebDriverWait(driver, 40);
             wait.until(ExpectedConditions.presenceOfElementLocated(by));
             log.info("元素查找等待："+by);
             ActionsUtil.successScreenShort();
@@ -38,7 +39,7 @@ public class WebElementUtil{
         }
         WebElement element=driver.findElement(by);
         long end_find_element_time=System.currentTimeMillis();
-        log.info("元素查找耗时：{}",(end_find_element_time-start_find_element_time)/1000);
+        log.info("元素查找耗时：毫秒{}",end_find_element_time-start_find_element_time);
         return element;
     }
 
