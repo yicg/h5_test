@@ -7,17 +7,18 @@
             <class name="com.yilutong.cases.TestDemo">
                 <methods>
                     <!--洗车服务流程-->
-                    <include name="washServiceTest"/>
-                    <!--检测服务流程-->
+                   <!-- <include name="washServiceTest"/>
+                    &lt;!&ndash;检测服务流程&ndash;&gt;
                     <include name="checkServiceTest"/>
-                    <!--保养服务流程-->
-                    <include name="maintainServiceTest"/>
+                    &lt;!&ndash;保养服务流程&ndash;&gt;
+                    <include name="maintainServiceTest"/>-->
+                    <include name="test"/>
                 </methods>
             </class>
         </classes>
     </test>
     <listeners>
-       <!-- <listener class-name="com.yilutong.config.ExtentTestNGIReporterListener"/>-->
+        <listener class-name="com.yilutong.config.ExtentTestNGIReporterListener"/>
     </listeners>
 
 </suite>

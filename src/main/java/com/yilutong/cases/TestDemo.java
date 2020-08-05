@@ -54,9 +54,17 @@ public class TestDemo extends DriverBase {
 
 
 
-    @BeforeTest
+    //@BeforeTest(description = "初始化浏览器数据")
     public void beforeTest(){
         DriverBase.openBrower("chrome");
+    }
+
+    /**
+     * 测试
+     */
+    @Test
+    public void test(){
+       log.info("这是一个中文输出啊：{}","测试一下编码格式");
     }
 
     /**
@@ -64,6 +72,7 @@ public class TestDemo extends DriverBase {
      * @throws InterruptedException
      */
     @Test
+   // @Story("订单支付方法")
     public void demo() throws InterruptedException {
         long start_method_time=System.currentTimeMillis();
         Reporter.log("订单支付方法");
@@ -97,6 +106,7 @@ public class TestDemo extends DriverBase {
      * @throws InterruptedException
      */
     @Test
+   // @Story("洗车服务")
     public void washServiceTest() throws InterruptedException {
         long start_method_time=System.currentTimeMillis();
         Reporter.log("洗车服务......");
@@ -180,6 +190,7 @@ public class TestDemo extends DriverBase {
      * 检测服务
      */
     @Test
+   // @Story("检测服务")
     public void checkServiceTest() throws InterruptedException {
         long start_method_time=System.currentTimeMillis();
         Reporter.log("检测服务.....");
@@ -251,6 +262,7 @@ public class TestDemo extends DriverBase {
      * 车辆保养服务
      */
     @Test
+    //@Story("车辆保养服务")
     public void maintainServiceTest() throws InterruptedException {
         long start_method_time=System.currentTimeMillis();
         Reporter.log("车辆保养服务....");
@@ -343,7 +355,7 @@ public class TestDemo extends DriverBase {
 
 
 
-    @AfterTest
+   // @AfterTest(description = "关闭浏览器结束操作")
     public void afterTest() throws InterruptedException {
         Thread.sleep(TIME);
          close();
@@ -374,4 +386,6 @@ public class TestDemo extends DriverBase {
     public void sleepMethod(String key){
 
     }
+
+
 }
