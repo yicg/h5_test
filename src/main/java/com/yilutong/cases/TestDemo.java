@@ -23,11 +23,10 @@ import java.util.Date;
 public class TestDemo extends DriverBase {
 
     static final long TIME=3000;
-
     int channelId=83;
     String openId="oI_kUw9jaumnO4sntgLJBBmM_FoM";
     String wechatId="gh_ddacef6564d5";
-    String ticketId="3D9D8E227B2724F04EBC3E5940770A4B6931F311D685CDBCBD1B1E935732F613079D8AA2EFB11F2AF12ADB9E2A63A6778FD1B8BDC4E8352CE83BAD24C7C64D25";
+    String ticketId="3D9D8E227B2724F04EBC3E5940770A4B6931F311D685CDBCBD1B1E935732F613079D8AA2EFB11F2AF12ADB9E2A63A677B31EC97F1DAB96658FD164461F9301FD";
 
     String testUrl="https://uat.yilutong.com/wechat_carowner/index.html?channelId="+channelId
             +"&openId="+openId
@@ -54,25 +53,17 @@ public class TestDemo extends DriverBase {
 
 
 
-    //@BeforeTest(description = "初始化浏览器数据")
+    @BeforeTest(description = "初始化浏览器数据")
     public void beforeTest(){
         DriverBase.openBrower("chrome");
     }
 
-    /**
-     * 测试
-     */
-    @Test
-    public void test(){
-       log.info("这是一个中文输出啊：{}","测试一下编码格式");
-    }
 
     /**
      * 订单支付方法
      * @throws InterruptedException
      */
     @Test
-   // @Story("订单支付方法")
     public void demo() throws InterruptedException {
         long start_method_time=System.currentTimeMillis();
         Reporter.log("订单支付方法");
@@ -106,7 +97,6 @@ public class TestDemo extends DriverBase {
      * @throws InterruptedException
      */
     @Test
-   // @Story("洗车服务")
     public void washServiceTest() throws InterruptedException {
         long start_method_time=System.currentTimeMillis();
         Reporter.log("洗车服务......");
@@ -190,7 +180,6 @@ public class TestDemo extends DriverBase {
      * 检测服务
      */
     @Test
-   // @Story("检测服务")
     public void checkServiceTest() throws InterruptedException {
         long start_method_time=System.currentTimeMillis();
         Reporter.log("检测服务.....");
@@ -262,7 +251,6 @@ public class TestDemo extends DriverBase {
      * 车辆保养服务
      */
     @Test
-    //@Story("车辆保养服务")
     public void maintainServiceTest() throws InterruptedException {
         long start_method_time=System.currentTimeMillis();
         Reporter.log("车辆保养服务....");
@@ -355,7 +343,7 @@ public class TestDemo extends DriverBase {
 
 
 
-   // @AfterTest(description = "关闭浏览器结束操作")
+    @AfterTest(description = "关闭浏览器结束操作")
     public void afterTest() throws InterruptedException {
         Thread.sleep(TIME);
          close();
