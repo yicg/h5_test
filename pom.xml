@@ -15,7 +15,7 @@
     <description>Demo project for Spring Boot</description>
     <properties>
         <selenium-java.version>3.141.59</selenium-java.version>
-        <httpclient.version>4.5.12</httpclient.version>
+        <httpclient.version>4.5.13</httpclient.version>
         <testng.extentsreport.version>1.3.1</testng.extentsreport.version>
         <extentreports.version>3.0.6</extentreports.version>
         <mybatis.version>3.4.4</mybatis.version>
